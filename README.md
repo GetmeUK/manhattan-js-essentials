@@ -6,10 +6,12 @@ packages.
 
 ## Installation
 
-npm install manhattan-essentials --save-dev
+`npm install manhattan-essentials --save-dev`
 
 
 ## Usage
 
+```JavaScipt
 var $ = require('manhattan.essentials');
 var myElement = $.one('.my-element');
+```
