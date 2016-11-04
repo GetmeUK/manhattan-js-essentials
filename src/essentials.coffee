@@ -17,13 +17,13 @@ create = (tag, props={}) ->
 
     return element
 
-one = (selectors, container=document) ->
-    # Select elements from a container using the given CSS selectors
-    return container.querySelector(selectors)
-
 many = (selectors, container=document) ->
-    # Select an element from a container using the given CSS selectors
+    # Select elements from within a container using the given CSS selectors
     return Array.prototype.slice.call(container.querySelectorAll(selectors))
+
+one = (selectors, container=document) ->
+    # Select an element from within a container using the given CSS selectors
+    return container.querySelector(selectors)
 
 
 # Events (DOM)
