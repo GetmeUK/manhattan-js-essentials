@@ -1,7 +1,3 @@
-
-// Pollyfill for older versions of Node
-require('es6-promise').polyfill()
-
 // Imports
 const path = require('path')
 const webpack = require('webpack')

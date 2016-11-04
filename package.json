@@ -1,8 +1,8 @@
 {
   "name": "manhattan-essentials",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A set of essential functions for JavaScript used by (probably) all manhattan JS packages.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "NODE_ENV=prod webpack --progress",
     "live": "webpack-dev-server --progress",
@@ -25,7 +25,6 @@
     "coffee-script": "^1.11.1",
     "coffeelint": "^1.16.0",
     "coffeelint-loader": "^0.1.1",
-    "es6-promise": "^3.2.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.1.2",
     "mocha-jsdom": "^1.1.0",
