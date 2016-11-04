@@ -44,12 +44,12 @@ describe 'Elements', () ->
 
     describe 'one', ->
 
-        it 'should return an element by CSS selector from the document', () ->
+        it 'should return an element by CSS selector from the document', ->
 
             element = $.one('.foo')
             element.should.equal foo
 
-        it 'should return an element by CSS selector from a container', () ->
+        it 'should return an element by CSS selector from a container', ->
 
             element = $.one('.bar', foo)
             element.should.equal bar
@@ -57,30 +57,28 @@ describe 'Elements', () ->
     describe 'many', ->
 
         it 'should return a list of elements by CSS selector from the
-            document', () ->
+            document', ->
 
             elements = $.many('.omm')
             elements.should.have.length 3
             elements.should.deep.equal [foo, bar, zee]
 
         it 'should return a list of elements by CSS selector from a
-            container', () ->
+            container', ->
 
             elements = $.many('.omm', foo)
             elements.should.have.length 2
             elements.should.deep.equal [bar, zee]
 
 
-describe 'Events (DOM)', () ->
+describe 'Events (DOM)', ->
 
     jsdom()
 
     foo = null
 
     beforeEach ->
-        body = document.body
         foo = $.create('div', {'class': 'foo omm'})
-        body.appendChild(foo)
 
     describe 'dispatch', ->
 
@@ -109,3 +107,42 @@ describe 'Events (DOM)', () ->
             $.listen(foo, {'click': listener})
             $.dispatch(foo, 'click', {'button': 1})
             listener.should.have.been.called
+
+
+describe 'Plugins', ->
+
+    jsdom()
+
+    describe 'config', ->
+
+        empty = null
+        configured = null
+
+        beforeEach ->
+            empty = $.create('div')
+            configured = $.create('div', {
+                'data-foo': '4',
+                'data-bar',
+                'data-zee': 'omm'
+                })
+
+        it 'should configure an instances based on a set of default properties,
+            user defined properties and `data-` attributes', ->
+
+            # Configured by props
+            inst = {}
+            props = {'foo': 2, 'bar': false, 'zee': 'mmo'}
+            $.config(inst, props, {}, empty)
+            inst.should.deep.equal props
+
+            # Configured by user defined arguments
+            inst = {}
+            args = {'foo': 3, 'zee': 'mom'}
+            $.config(inst, props, args, empty)
+            inst.should.deep.equal {'foo': 3, 'bar': false, 'zee': 'mom'}
+
+            # Configured by `data-` attributes
+            inst = {}
+            args = {'foo': 3, 'zee': 'mom'}
+            $.config(inst, props, args, configured)
+            inst.should.deep.equal {'foo': 4, 'bar': true, 'zee': 'omm'}

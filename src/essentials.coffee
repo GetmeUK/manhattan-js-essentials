@@ -53,6 +53,38 @@ listen = (element, listeners) ->
             element.addEventListener(eventType, func)
 
 
+# Plugins
+
+config = (inst, props, args, element, prefix='data-') ->
+    # Configure the given object (instance) using a set of:
+    #
+    # - default properties which are overridden by,
+    # - a set of user defined arguments which are overridden by,
+    # - a set of `data-` attributes defined against the given element.
+    #
+    # Optionally the attribute prefix can be customised.
+    for k, v of props
+
+        # Set the using the default
+        inst[k] = v
+
+        # Set using an argument
+        if args.hasOwnProperty(k)
+            inst[k] = args[k]
+
+        # Set using a `data-` attribute
+        attr = prefix + k.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+        if element.hasAttribute(attr)
+            if typeof v is 'number'
+                inst[k] = parseInt(element.getAttribute(attr))
+            else if v is false
+                inst[k] = true
+            else
+                inst[k] = element.getAttribute(attr)
+
+
+# Exports
+
 module.exports = {
 
     # Elements
@@ -63,6 +95,9 @@ module.exports = {
     # Events (DOM)
     dispatch: dispatch,
     ignore: ignore,
-    listen: listen
+    listen: listen,
+
+    # Plugins
+    config: config
 
     }
