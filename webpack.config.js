@@ -54,6 +54,8 @@ module.exports = {
     },
 
     output: {
+        library: 'ManhattanEssentials',
+        libraryTarget: 'umd',
         path: path.join(__dirname, 'dist'),
         filename: 'index.js'
     },
