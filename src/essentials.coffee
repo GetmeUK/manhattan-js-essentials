@@ -34,7 +34,8 @@ dispatch = (element, eventType, props={}) ->
     event.initEvent(eventType, true, true)
     for k, v of props
         event[k] = v
-    return element.dispatchEvent(event)
+    element.dispatchEvent(event)
+    return event
 
 ignore = (element, listeners) ->
     # Remove one or more event listeners from an element. The `listeners`

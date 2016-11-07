@@ -106,7 +106,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    v = props[k];
 	    event[k] = v;
 	  }
-	  return element.dispatchEvent(event);
+	  element.dispatchEvent(event);
+	  return event;
 	};
 
 	ignore = function(element, listeners) {
