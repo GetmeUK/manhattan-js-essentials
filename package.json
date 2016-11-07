@@ -4,7 +4,7 @@
   "description": "A set of essential functions for JavaScript used by (probably) all manhattan JS packages.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "NODE_ENV=prod webpack --progress",
+    "dist": "NODE_ENV=dist webpack --progress",
     "live": "webpack-dev-server --progress",
     "watch": "webpack --watch --progress",
     "test": "mocha --require coffee-script/register --compilers coffee:coffee-script"
