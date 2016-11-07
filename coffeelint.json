@@ -31,7 +31,7 @@
     "level": "ignore"
   },
   "no_implicit_braces": {
-    "level": "error"
+    "level": "ignore"
   },
   "no_stand_alone_at": {
     "level": "error"
