@@ -83,6 +83,13 @@ config = (inst, props, args, element, prefix='data-') ->
                 inst[k] = element.getAttribute(attr)
 
 
+# Regular expressions
+
+escapeRegExp = (s) ->
+    # Escape a string literal for use in a regular expression
+    return s.replace(/[\^\$\\\.\*\+\?\(\)\[\]\{\}\|]/g, '\\$&')
+
+
 # Exports
 
 module.exports = {
@@ -98,6 +105,9 @@ module.exports = {
     listen: listen,
 
     # Plugins
-    config: config
+    config: config,
+
+    # Regular expressions
+    escapeRegExp: escapeRegExp
 
     }

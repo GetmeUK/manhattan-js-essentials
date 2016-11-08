@@ -146,3 +146,13 @@ describe 'Plugins', ->
             args = {'foo': 3, 'zee': 'mom'}
             $.config(inst, props, args, configured)
             inst.should.deep.equal {'foo': 4, 'bar': true, 'zee': 'omm'}
+
+
+describe 'Regular expressions', ->
+
+    describe 'escapeRegExp', ->
+
+        it 'should escape a string for use in a regular expression', ->
+
+            escaped = $.escapeRegExp('^(Start-Finish)$')
+            escaped.should.equal '\\^\\(Start-Finish\\)\\$'

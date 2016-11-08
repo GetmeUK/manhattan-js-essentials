@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 1 */
 /***/ function(module, exports) {
 
-	var config, create, dispatch, ignore, listen, many, one,
+	var config, create, dispatch, escapeRegExp, ignore, listen, many, one,
 	  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 	create = function(tag, props) {
@@ -175,6 +175,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return results;
 	};
 
+	escapeRegExp = function(s) {
+	  return s.replace(/[\^\$\\\.\*\+\?\(\)\[\]\{\}\|]/g, '\\$&');
+	};
+
 	module.exports = {
 	  create: create,
 	  one: one,
@@ -182,7 +186,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dispatch: dispatch,
 	  ignore: ignore,
 	  listen: listen,
-	  config: config
+	  config: config,
+	  escapeRegExp: escapeRegExp
 	};
 
 
