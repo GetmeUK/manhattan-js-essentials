@@ -11,7 +11,7 @@ $ = require '../src/essentials'
 # Set up
 
 chai.should()
-chai.use(sinonChai);
+chai.use(sinonChai)
 
 
 # Tests
