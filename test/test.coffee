@@ -132,13 +132,13 @@ describe 'Plugins', ->
             # Configured by props
             inst = {}
             props = {'foo': 2, 'bar': false, 'zee': 'mmo'}
-            $.config(inst, props, {}, empty)
+            $.config(inst, props, {})
             inst.should.deep.equal props
 
             # Configured by user defined arguments
             inst = {}
             args = {'foo': 3, 'zee': 'mom'}
-            $.config(inst, props, args, empty)
+            $.config(inst, props, args)
             inst.should.deep.equal {'foo': 3, 'bar': false, 'zee': 'mom'}
 
             # Configured by `data-` attributes

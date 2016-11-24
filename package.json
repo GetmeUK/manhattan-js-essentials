@@ -1,6 +1,6 @@
 {
   "name": "manhattan-essentials",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A set of essential functions for JavaScript used by (probably) all manhattan JS packages.",
   "main": "dist/index.js",
   "scripts": {

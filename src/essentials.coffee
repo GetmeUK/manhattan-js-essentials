@@ -73,6 +73,9 @@ config = (inst, props, args, element, prefix='data-') ->
             inst[k] = args[k]
 
         # Set using a `data-` attribute
+        if not element
+            continue
+
         attr = prefix + k.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
         if element.hasAttribute(attr)
             if typeof v is 'number'
