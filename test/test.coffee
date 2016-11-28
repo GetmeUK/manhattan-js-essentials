@@ -33,6 +33,17 @@ describe 'Elements', () ->
         foo.appendChild(bar)
         foo.appendChild(zee)
 
+    describe 'closest', ->
+
+        it 'the closest ancestor of the current element (or the current element
+            itself) which matches the selectors.', ->
+
+            element = $.closest(zee, '.foo')
+            element.should.equal foo
+
+            element = $.closest(zee, '.zee')
+            element.should.equal zee
+
     describe 'create', ->
 
         it 'should generate a new element', ->

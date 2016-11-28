@@ -2,6 +2,26 @@
 
 # Elements
 
+closest = (element, selectors) ->
+    # Returns the closest ancestor of the current element (or the current
+    # element itself) which matches the selectors.
+    if element.closest
+        return element.closest(selectors)
+
+    # Polyfil taken from here (http://stackoverflow.com/a/16430350/4657956) in
+    # case closest isn't supported natively by the browser.
+    matches = element.matches or
+        element.webkitMatchesSelector or
+        element.mozMatchesSelector or
+        element.msMatchesSelector
+
+    while element
+        if matches.call(element, selectors)
+            break
+        element = element.parentElement
+
+    return element
+
 create = (tag, props={}) ->
     # Shortcut for creating an element
 
@@ -18,11 +38,11 @@ create = (tag, props={}) ->
     return element
 
 many = (selectors, container=document) ->
-    # Select elements from within a container using the given CSS selectors
+    # Select elements from within a container using the given CSS selector
     return Array.prototype.slice.call(container.querySelectorAll(selectors))
 
 one = (selectors, container=document) ->
-    # Select an element from within a container using the given CSS selectors
+    # Select an element from within a container using the given CSS selector
     return container.querySelector(selectors)
 
 
@@ -98,6 +118,7 @@ escapeRegExp = (s) ->
 module.exports = {
 
     # Elements
+    closest: closest,
     create: create,
     one: one,
     many: many,
