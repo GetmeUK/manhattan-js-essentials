@@ -1,5 +1,4 @@
 
-
 # Elements
 
 closest = (element, selectors) ->
@@ -113,6 +112,18 @@ escapeRegExp = (s) ->
     return s.replace(/[\^\$\\\.\*\+\?\(\)\[\]\{\}\|]/g, '\\$&')
 
 
+# Tests
+
+cssSelectorSupported = (selector) ->
+    # Return true if the specified CSS selector is supported by the current
+    # browser.
+    try
+        document.querySelector(selector)
+    catch e
+        return false
+    return true
+
+
 # Exports
 
 module.exports = {
@@ -132,6 +143,8 @@ module.exports = {
     config: config,
 
     # Regular expressions
-    escapeRegExp: escapeRegExp
+    escapeRegExp: escapeRegExp,
 
+    # Tests
+    cssSelectorSupported: cssSelectorSupported
     }

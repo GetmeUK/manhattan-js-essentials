@@ -167,3 +167,38 @@ describe 'Regular expressions', ->
 
             escaped = $.escapeRegExp('^(Start-Finish)$')
             escaped.should.equal '\\^\\(Start-Finish\\)\\$'
+
+
+describe 'Tests', ->
+
+    jsdom()
+
+    describe 'cssSelectorSupported', ->
+
+        querySelector = null
+
+        before ->
+            querySelector = document.querySelector
+            document.querySelector = (selector) ->
+                if selector is ':autofill'
+                    return
+                else
+                    throw new Error('Not a supported selector')
+
+        after ->
+            document.querySelector = querySelector
+
+        it 'should return true for :autofill', ->
+
+            supported = $.cssSelectorSupported(':autofill')
+            supported.should.be.true
+
+        it 'should return true for :-webkit-autofill', ->
+
+            supported = $.cssSelectorSupported(':-webkit-autofill')
+            supported.should.be.false
+
+        it 'should return true for :-moz-autofill', ->
+
+            supported = $.cssSelectorSupported(':-moz-autofill')
+            supported.should.be.false
