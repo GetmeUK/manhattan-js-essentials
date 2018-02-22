@@ -1,7 +1,6 @@
 # manhattan-essentials
 
-A set of essential functions for JavaScript used by (probably) all manhattan JS
-packages.
+A set of essential functions for manhattan JavaScript packages.
 
 
 ## Installation
@@ -12,6 +11,6 @@ packages.
 ## Usage
 
 ```JavaScipt
-var $ = require('manhattan.essentials');
-var myElement = $.one('.my-element');
+import * as $ from 'manhattan-essentials'
+const myElement = $.one('.my-element')
 ```

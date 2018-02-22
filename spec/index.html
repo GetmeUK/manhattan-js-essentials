@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>manhattan-essentials</title>
+    </head>
+    <body>
+        <div class="essential essentials">
+            Manhattan
+            <div class="essential__child">Essential</div>
+        </div>
+        <div class="essential essentials">
+            ES6
+        </div>
+        <script src="../umd/index.js"></script>
+        <script>
+
+            $ = manhattanEssentials;
+
+            // Manipulation
+            const essentialDiv = $.create('div', {'id': 'essential'})
+            console.log(essentialDiv)
+
+            // Events
+            function onTest(ev) {
+                console.log(ev)
+            }
+            $.listen(essentialDiv, {'test': onTest})
+            $.dispatch(essentialDiv, 'test', {foo: 'bar'})
+            $.ignore(essentialDiv, {'test': onTest})
+            $.dispatch(essentialDiv, 'test', {foo: 'bar'})
+
+            // Selectors
+            console.log($.one('.essential__child'))
+            console.log($.closest($.one('.essential__child'), '.essential'))
+            console.log($.many('.essentials'))
+
+        </script>
+    </body>
+</html>

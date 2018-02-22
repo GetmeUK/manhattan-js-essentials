@@ -1,7 +1,7 @@
 # Directories
 .cache
+.sass-cache
 node_modules
-umd
 
 # Files
 npm-debug.log
