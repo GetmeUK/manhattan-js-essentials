@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "webpack || exit 0",
-    "lint": "eslint module spec *.js --quiet",
+    "lint": "eslint module spec *.js --quiet || exit 0",
     "test": "cross-env NODE_ENV=test nyc mocha ./spec/**/*.spec.js || exit 0",
     "watch": "webpack --watch || exit 0"
   },

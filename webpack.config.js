@@ -9,7 +9,7 @@ module.exports = {
      },
 
      output: {
-         library: "manhattanEssentials",
+         library: "manhattan-essentials",
          libraryTarget: "umd",
          filename: "umd/[name].js"
      },
