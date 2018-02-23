@@ -9,13 +9,8 @@ module.exports = {
      },
 
      output: {
-
          library: "manhattanEssentials",
-
-         // We want webpack to build a UMD wrapper for our module
          libraryTarget: "umd",
-
-         // the destination file name
          filename: "umd/[name].js"
      },
 
