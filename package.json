@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "webpack || exit 0",
+    "cover": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint module spec *.js --quiet || exit 0",
     "test": "cross-env NODE_ENV=test nyc mocha ./spec/**/*.spec.js || exit 0",
     "watch": "webpack --watch || exit 0"
@@ -48,10 +49,12 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.1.3",
     "eslint": "^4.18.1",
     "jsdom": "^11.6.2",
     "mocha": "^5.0.1",
+    "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^11.4.1",
     "sinon": "^4.3.0",
     "sinon-chai": "^2.14.0",
