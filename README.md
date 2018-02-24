@@ -4,6 +4,9 @@
     <p>A set of essential functions for Manhattan[CMS] JavaScript packages.</p>
 </div>
 
+---
+[![npm version](https://badge.fury.io/js/manhattan-essentials.svg)](https://badge.fury.io/js/manhattan-essentials)
+
 ## Installation
 
 `npm install manhattan-essentials --save-dev`
