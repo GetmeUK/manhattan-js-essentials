@@ -86,8 +86,8 @@ describe('DOM selectors', () => {
     })
 
     describe('closest', () => {
-        it('the closest ancestor of the current element (or the current' +
-           'element itself) which matches the selectors.', () => {
+        it('the closest ancestor of the current element (or the current'
+            + 'element itself) which matches the selectors.', () => {
 
             let element = $.closest(zee, '.foo')
             element.should.equal(foo)
@@ -109,15 +109,15 @@ describe('DOM selectors', () => {
     })
 
     describe('many', () => {
-        it('should return a list of elements by CSS selector from the' +
-           'document', () => {
+        it('should return a list of elements by CSS selector from the'
+            + 'document', () => {
 
             const elements = $.many('.omm')
             elements.should.have.length(3)
             elements.should.deep.equal([foo, bar, zee])
         })
-        it('should return a list of elements by CSS selector from a' +
-           'container', () => {
+        it('should return a list of elements by CSS selector from a'
+            + 'container', () => {
 
             const elements = $.many('.omm', foo)
             elements.should.have.length(2)
@@ -148,8 +148,8 @@ describe('Plugins', () => {
         configured.remove()
     })
 
-    it('should configure an instances based on a set of default properties,' +
-       'user defined properties and `data-` attributes', () => {
+    it('should configure an instances based on a set of default properties, '
+        + 'user defined properties and `data-` attributes', () => {
 
         let inst = null
         let props = null

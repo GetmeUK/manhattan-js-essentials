@@ -81,10 +81,10 @@ export function closest(element, selectors) {
 
     // Polyfil taken from here (http://stackoverflow.com/a/16430350/4657956) in
     // case closest isn't supported natively by the browser.
-    const matches = element.matches ||
-        element.webkitMatchesSelector ||
-        element.mozMatchesSelector ||
-        element.msMatchesSelector
+    const matches = element.matches
+        || element.webkitMatchesSelector
+        || element.mozMatchesSelector
+        || element.msMatchesSelector
 
     while (element) {
         if(matches.call(element, selectors)) {
@@ -135,8 +135,8 @@ export function config(inst, props, args, element, prefix='data-') {
 
         // If an element is supplied check for an attribute to set the value
         if (element) {
-            let attrName = prefix +
-                k.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+            let attrName = prefix
+                + k.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
             if(element.hasAttribute(attrName)) {
                 if (typeof props[k] === 'number') {
