@@ -65,9 +65,9 @@ describe('DOM manipulators', () => {
 
 describe('DOM selectors', () => {
 
-    let foo = null,
-        bar = null,
-        zee = null
+    let foo = null
+    let bar = null
+    let zee = null
 
     before(() => {
         const {body} = document
@@ -128,8 +128,8 @@ describe('DOM selectors', () => {
 
 describe('Plugins', () => {
 
-    let empty = null,
-        configured = null
+    let empty = null
+    let configured = null
 
     before(() => {
         empty = $.create('div')
@@ -151,9 +151,9 @@ describe('Plugins', () => {
     it('should configure an instances based on a set of default properties,' +
        'user defined properties and `data-` attributes', () => {
 
-        let inst = null,
-            props = null,
-            args = null
+        let inst = null
+        let props = null
+        let args = null
 
         // Configured by props
         inst = {}
