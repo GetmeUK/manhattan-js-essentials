@@ -93,7 +93,7 @@ module.exports = {
         "lines-between-class-members": ["error", "always"],
         "max-depth": "error",
         "max-len": "error",
-        "max-lines": "error",
+        "max-lines": "off",
         "max-nested-callbacks": "error",
         "max-params": "off",
         "max-statements": "off",

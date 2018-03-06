@@ -19,9 +19,15 @@ describe('DOM events', () => {
     describe('dispatch', () => {
         it('should dispatch an event to an element', () => {
             const listener = sinon.spy()
+            const listener2 = sinon.spy()
             foo.addEventListener('click', listener)
+            foo.addEventListener('mouseover', listener2)
+
             $.dispatch(foo, 'click', {'button': 1})
             listener.should.have.been.called
+
+            $.dispatch(foo, 'mouseover')
+            listener2.should.have.been.called
         })
     })
 
@@ -86,18 +92,49 @@ describe('DOM selectors', () => {
     })
 
     describe('closest', () => {
+        let matches = null
+
+        before(() => {
+            matches = zee.matches // eslint-disable-line
+        })
+
+        after(() => {
+            zee.matches = matches
+            delete zee.closest
+        })
+
         it('the closest ancestor of the current element (or the current'
             + 'element itself) which matches the selectors.', () => {
 
+            // Using polyfill closest
+            delete zee.closest
             let element = $.closest(zee, '.foo')
             element.should.equal(foo)
 
             element = $.closest(zee, '.zee')
             element.should.equal(zee)
+
+            // Using native closest
+            zee.closest = () => {
+                return zee
+            }
+            element = $.closest(zee, '.zee')
+            element.should.equal(zee)
+
+            // Expect an error if element doesn't support any form of matches
+            // method.
+            delete zee.closest
+            zee.matches = null
+            zee.webkitMatchesSelector = null
+            zee.mozMatchesSelector = null
+            zee.msMatchesSelector = null
+            chai.expect(() => {
+                $.closest(zee, '.zee')
+            }).to.throw(TypeError)
         })
     })
 
-    describe('closest', () => {
+    describe('one', () => {
         it('should return an element by CSS selector from the document', () => {
             const element = $.one('.foo')
             element.should.equal(foo)
@@ -138,7 +175,10 @@ describe('Plugins', () => {
             {
                 'data-foo': '4',
                 'data-bar': '',
-                'data-zee': 'omm'
+                'data-zee': 'omm',
+                'data-other-foo': '4',
+                'data-other-bar': '',
+                'data-other-zee': 'omm'
             }
         )
     })
@@ -192,6 +232,25 @@ describe('Plugins', () => {
             'zee': 'omm'
         })
 
+        // Configured by custom `data-other-` attributes
+        inst = {}
+        args = {
+            'foo': 3,
+            'zee': 'mom'
+        }
+        props = {
+            'foo': 2,
+            'bar': false,
+            'omm': true,
+            'zee': 'mmo'
+        }
+        $.config(inst, props, args, configured, 'data-other-')
+        inst.should.deep.equal({
+            'foo': 4,
+            'bar': true,
+            'omm': true,
+            'zee': 'omm'
+        })
     })
 
 })
