@@ -37,10 +37,14 @@ export function ignore(element, listeners) {
  *     listen(myElement, {'mouseover mousedown': myFunc})
  *
  */
-export function listen(element, listeners) {
+export function listen(element, listeners, options) {
     for (let eventTypes in listeners) {
         for (let eventType of eventTypes.split(/\s+/)) {
-            element.addEventListener(eventType, listeners[eventTypes])
+            element.addEventListener(
+                eventType,
+                listeners[eventTypes],
+                options
+            )
         }
     }
 }

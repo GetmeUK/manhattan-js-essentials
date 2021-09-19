@@ -1,6 +1,6 @@
 {
   "name": "manhattan-essentials",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of essential functions for manhattan JavaScript packages.",
   "engines": {
     "node": ">=8.9.4"
